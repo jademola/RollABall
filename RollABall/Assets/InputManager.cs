@@ -20,6 +20,10 @@ public class InputManager : MonoBehaviour
         if (Input.GetKey(KeyCode.D)) {
             inputVector += Vector2.right;
         }
+        if(Input.GetKeyDown(KeyCode.Space) && GetComponent<Rigidbody>().transform.position.y < 0.6f) {
+            Vector3 jumpVector = new Vector3(0, 5f, 0);
+            GetComponent<Rigidbody>().AddForce(jumpVector, ForceMode.Impulse);
+        }
 
         OnMove?.Invoke(inputVector);
     }
